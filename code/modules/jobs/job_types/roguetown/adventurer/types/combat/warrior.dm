@@ -274,13 +274,14 @@
 		STATKEY_STR = 2,
 		STATKEY_WIL = 2,
 		STATKEY_CON = 1,
+		STATKEY_SPD = -1,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/axes = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/shields = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/whipsflails = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
@@ -296,7 +297,7 @@
 			"Frogmouth"			= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
 			"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
 			"Savoyard"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"Barbute"		= /obj/item/clothing/head/roguetown/helmet/heavy
+			"Barbute"		= /obj/item/clothing/head/roguetown/helmet/heavy,
 			"Bucket"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
 			"None"
 			)
@@ -325,7 +326,7 @@
 		pants = legs[legschoice]
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/plate
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/battleskirt/black
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/flashlight/flare/torch/lantern
@@ -338,19 +339,19 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("Executioner's Sword","Warhammer + Shield","Flail + Shield","Lucerne","Greataxe")
+		var/weapons = list("Sword","Mace","Double Shield","Plate Gloves")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		switch(weapon_choice)
 			if("Sword")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				beltr = /obj/item/rogueweapon/sword/short
+				beltr = /obj/item/rogueweapon/sword
 				gloves = /obj/item/clothing/gloves/roguetown/chain
-			if("Cudgel")
+			if("Mace")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				beltr = /obj/item/rogueweapon/mace/cudgel
 				gloves = /obj/item/clothing/gloves/roguetown/chain
 			if("Double Shield")
-				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/shield/tower/metal
 				gloves = /obj/item/clothing/gloves/roguetown/chain
 			if("Plate Gloves")
